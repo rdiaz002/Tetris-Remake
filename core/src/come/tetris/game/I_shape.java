@@ -2,6 +2,8 @@ package come.tetris.game;
 
 import com.badlogic.gdx.graphics.Color;
 
+import java.math.BigInteger;
+
 
 /**
  * Created by Ronny on 8/25/2017.
@@ -9,13 +11,12 @@ import com.badlogic.gdx.graphics.Color;
 
 public class I_shape extends Shape {
     public I_shape() {
-        boolean[][] t_piece= {{true},{true},{true}};
-        piece = new boolean[3][1];
-        piece=t_piece;
+        piece = new Bit9("100100100",1,3);
+        rotate = new Bit9("100011100",0,0);
         color = 1;
     }
     public void rotate() {
-        super.rotate();
+        piece=piece.xor(rotate);
     }
 
 }

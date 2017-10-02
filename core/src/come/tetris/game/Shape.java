@@ -1,6 +1,8 @@
 package come.tetris.game;
 
 import com.badlogic.gdx.graphics.Color;
+
+import java.math.BigInteger;
 import java.util.Random;
 
 /**
@@ -8,7 +10,8 @@ import java.util.Random;
  */
 
 public class Shape {
-    protected boolean[][] piece;
+    protected Bit9 piece;
+    protected Bit9 rotate;
     protected int color;
 
 
@@ -18,13 +21,16 @@ public class Shape {
     }
 
     public void rotate(){
-        boolean[][] temp_piece = new boolean[piece[0].length][piece.length];
-        for ( int i = 0 ; i< piece.length ; i++){
-            for ( int j = 0 ; j< piece[i].length ; j++){
-                temp_piece[temp_piece.length-1-j][i] = piece[i][j];
-            }
-        }
-        piece=temp_piece;
+        piece = piece.xor(rotate);
+
+//        boolean[][] temp_piece = new boolean[piece[0].length][piece.length];
+//        for ( int i = 0 ; i< piece.length ; i++){
+//            for ( int j = 0 ; j< piece[i].length ; j++){
+//                temp_piece[temp_piece.length-1-j][i] = piece[i][j];
+//            }
+//        }
+//        piece=temp_piece;
+
     }
 
 }
